@@ -1,36 +1,39 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import Filter from "./Filter";
 
-// const heading = React.createElement(
-//   "h1",
-//   { id: "heading" },
-//   "Hello React First lesson"
-// );
+const ParentComponent = () => {
+  const dropdownContent = [
+    {
+      name: "name",
+      label: "Name",
+      inputType: "text",
+      placeholder: "Enter name",
+    },
+    {
+      name: "age",
+      label: "Age",
+      inputType: "number",
+      placeholder: "Enter age",
+    },
+    {
+      name: "gender",
+      label: "Gender",
+      inputType: "text",
+      placeholder: "Enter gender",
+    },
+  ];
 
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// root.render(heading);
-
-//  what if we wanted to create nested div inside div with id child in react?
-// <div id="parent">
-// <div id="child">
-// <h1>I am an h1 tag</h1>
-// </div>
-// </div>
-
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "Hello everyone"),
-    React.createElement("h2", {}, "i am an h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "i am an h1 tag"),
-    React.createElement("h2", {}, "i am an h2 tag"),
-  ]),
-]);
-console.log(parent);
-// ReactElement(object) = HTML(Browser Unterstands)
+  return (
+    <div>
+      <Filter buttonName="Filter Options" dropdownContent={dropdownContent} />
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
+root.render(<ParentComponent />);
+
+//Create the Filter component. If user click on the filter button it will
+//open the dropdown as shown in the Figma. DropDown content should be dynamic like i can send the dropdown content from parent component like their name and input type.
+//i can also change the name of the filter button using props has context menu
